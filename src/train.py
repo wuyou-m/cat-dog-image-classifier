@@ -62,13 +62,6 @@ data_augmentation = tf.keras.Sequential([
     tf.keras.layers.RandomContrast(0.1),
 ])
 
-# 减弱版本
-# data_augmentation = tf.keras.Sequential([
-#     tf.keras.layers.RandomFlip("horizontal"),
-#     tf.keras.layers.RandomRotation(0.05),
-#     tf.keras.layers.RandomZoom(0.05),
-# ])
-
 # ------------------------
 # Build Model
 # ------------------------
@@ -80,7 +73,7 @@ def build_model():
     if MODEL_TYPE == "baseline":
         model = build_baseline_cnn()
         model = compile_model(model, learning_rate=1e-4)
-    # 迁移学习版本，默认冻结预训练模型的权重，只训练新添加的输出层。后续可以解冻部分预训练模型进行微调。
+
     elif MODEL_TYPE == "transfer":
         model, base_model = build_transfer_model(base_trainable=False)
         model = compile_model(model, learning_rate=1e-4)
@@ -143,11 +136,9 @@ def train():
 
         base_model.trainable = True
 
-        # 冻结前面的层，只解冻最后一部分
         for layer in base_model.layers[:FINE_TUNE_AT]:
             layer.trainable = False
 
-        # fine-tuning 要用更小学习率
         model = compile_model(model, learning_rate=1e-5)
 
         fine_tune_history = model.fit(
