@@ -21,6 +21,7 @@ Final validation accuracy reaches **~98.7%** on the validation dataset.
 
 # Project Structure
 
+```
 cat-dog-classifier
 │
 ├── models
@@ -41,6 +42,7 @@ cat-dog-classifier
 ├── requirements.txt
 └── README.md
 
+```
 
 ---
 
@@ -119,7 +121,9 @@ Run prediction on a custom image:
 python -m src.predict path/to/image.jpg
 
 Example output:
+
 Prediction: dog
+
 Confidence: 0.97
 
 # Error Analysis
