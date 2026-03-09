@@ -1,6 +1,7 @@
 # Cat vs Dog Image Classifier (TensorFlow CNN)
 
 Author: Wuyou Mao
+
 This project was built as part of my personal machine learning portfolio and learning process.
 
 This project implements an end-to-end deep learning pipeline for **cat vs dog image classification** using TensorFlow and transfer learning.
@@ -102,10 +103,11 @@ Evaluate the model and generate metrics:
 python -m src.evaluate
 
 Outputs include:
-    - Accuracy
-    - Precision / Recall
-    - Confusion matrix
-    - Misclassified samples
+
+- Accuracy
+- Precision / Recall
+- Confusion matrix
+- Misclassified samples
 
 ### Confusion Matrix
 
