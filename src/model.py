@@ -9,8 +9,6 @@ from tensorflow.keras.applications.mobilenet_v2 import preprocess_input
 def build_baseline_cnn(input_shape=(224, 224, 3), dropout_rate=0.5):
     """
     Build a simple baseline CNN for cat vs dog classification.
-    从简单CNN开始观察overfitting的情况，后续再增加复杂度或者使用迁移学习。
-    baseline CNN 使用 Flatten() 层，参数量会变大，更容易过拟合。transfer learning 使用 GlobalAveragePooling2D() 更现代、更常见
     """
     model = models.Sequential([
         layers.Input(shape=input_shape),
@@ -44,7 +42,7 @@ def build_transfer_model(
 ):
     """
     Build a transfer learning model using MobileNetV2.
-    We use MobileNetV2 as the base model, which is pre-trained on ImageNet. 保留 ImageNet 上学到的特征提取能力 自己接一个适合猫狗二分类的输出层
+    We use MobileNetV2 as the base model, which is pre-trained on ImageNet.
     """
     base_model = MobileNetV2(
         input_shape=input_shape,
@@ -66,7 +64,7 @@ def build_transfer_model(
 
     model = models.Model(inputs, outputs)
 
-    return model, base_model # 返回 base_model 以便后续分析迁移学习的特征提取能力
+    return model, base_model
 
 
 def compile_model(model, learning_rate=1e-4):
