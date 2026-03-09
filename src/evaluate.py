@@ -36,7 +36,7 @@ def load_validation_dataset():
         image_size=IMG_SIZE,
         batch_size=BATCH_SIZE,
         label_mode="binary",
-        shuffle=False # 评估时不需要打乱数据，保持顺序以便后续分析
+        shuffle=False
     )
     return val_ds
 
