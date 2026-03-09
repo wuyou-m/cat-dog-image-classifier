@@ -1,0 +1,20 @@
+# python
+__pycache__/
+*.pyc
+
+# virtual env
+.venv/
+venv/
+
+# dataset
+data/
+
+# checkpoints
+*.h5
+*.keras
+
+# outputs
+outputs/misclassified/
+
+# system
+.DS_Store
